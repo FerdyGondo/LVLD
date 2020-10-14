@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 import {Dimensions, FlatList, View, ActivityIndicator} from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import Actions from '../../actions'
-import ProfileComponent from '../shared/components/Profile'
+import ProfileBar from '../shared/components/ProfileBar'
 
 import Fontisto from 'react-native-vector-icons/Fontisto';
 const myIcon = <Fontisto name="angle-left" size={30} color="#fff" />;
@@ -59,7 +59,7 @@ const Sneaker = React.memo(({ navigation }: Prop): ReactElement => {
 
     return (
         <Container>
-            <ProfileComponent />
+            <ProfileBar />
             <GenderContainer>
                 <GenderMaleContainer onPress={() => genderSwitch("male")} gender={gender}>
                     <FirstText gender={gender}>{`Men's`}</FirstText>

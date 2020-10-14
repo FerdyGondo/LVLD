@@ -1,8 +1,8 @@
 import React from 'react'
 import { Dimensions } from 'react-native'
-import styled from 'styled-components'
+import styled from 'styled-components/native'
 import ProfileIcon from '../../assets/svg/ProfileIcon'
-import ProfileComponent from '../shared/components/Profile'
+import ProfileBar from '../shared/components/ProfileBar'
 
 const {width,height} = Dimensions.get("window")
 
@@ -19,7 +19,7 @@ export default function index({ route, navigation }: Props) {
     return (
         <Container>
             <ProfileHeader>
-                <ProfileComponent />
+                <ProfileBar />
             </ProfileHeader>
             <Scroll>
                 <MainContainer>

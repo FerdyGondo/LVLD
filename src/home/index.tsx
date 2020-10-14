@@ -47,7 +47,7 @@ const Home = React.memo(({ navigation }: Props): ReactElement => {
             </SneakerImageContainer>
           </RenderItemContainer>
           <Rockus>
-            <ApparelContainer os={Platform.OS}>
+            <ApparelContainer>
               <HeroText>{"Apparel Contests"}</HeroText>
               <HeroSmallerText>{"Entry Fee $0.50-$6.00"}</HeroSmallerText>
               <ApparelMainText>
@@ -59,7 +59,7 @@ const Home = React.memo(({ navigation }: Props): ReactElement => {
             </ApparelImageContainer>
           </Rockus>
           <RokusWatch>
-            <WatchContainer os={Platform.OS}>
+            <WatchContainer>
               <HeroText>{"Watch Contests"}</HeroText>
               <WatchMainText>
                 <PlayBlackText>{"Coming Soon"}</PlayBlackText>
@@ -137,14 +137,17 @@ const BodyContainer = styled.View`
   padding: 12px 0px 0px;;
   flex: 1;
 `
-const LiveText = styled.Text`
+interface OSProps {
+  os: string;
+}
+const LiveText = styled.Text<OSProps>`
   color: #000;
   text-transform: uppercase;
   letter-spacing: 5px;
   font-family: "Montserrat-ExtraBold";
   font-size: 20px;
   margin-bottom: 5px;
-  margin-left: ${props => (props.os === "ios" ? "38px" : "32px")};
+  margin-left: ${({os}) => (os === "ios" ? "38px" : "32px")};
 `
 const HeroText = styled.Text`
   font-size: 20px;
@@ -202,9 +205,9 @@ const WatchMainText = styled(MainText)`
   background-color: #fff;
   width: 100px;
 `
-const SneakerImageContainer = styled.View`
+const SneakerImageContainer = styled.View<OSProps>`
   position: absolute;
-  bottom: ${props => (props.os === "ios" ? "8px" : "12px")};
+  bottom: ${({os}) => (os === "ios" ? "8px" : "12px")};
   right: 0px;
   width: ${width*0.92}px;
   height: 100px
@@ -214,9 +217,9 @@ const SneakerImage = styled.Image`
   height: 100%;
   align-self: center;
 `
-const ApparelImageContainer = styled.View`
+const ApparelImageContainer = styled.View<OSProps>`
   position: absolute;
-  bottom: ${props => (props.os === "ios" ? "8px" : "12px")};
+  bottom: ${({os}) => (os === "ios" ? "8px" : "12px")};
   right: -13px;
   bottom: -60px;
 `
@@ -224,9 +227,9 @@ const ApparelImage = styled.Image`
   width: ${width * 0.57}px; 
   height: ${width * 0.6}px;
 `
-const WatchImageContainer = styled.View`
+const WatchImageContainer = styled.View<OSProps>`
   position: absolute;
-  bottom: ${props => (props.os === "ios" ? "8px" : "12px")};
+  bottom: ${({os}) => (os === "ios" ? "8px" : "12px")};
   right: -13px;
   bottom: -30px;
 `
@@ -234,9 +237,9 @@ const WatchImage = styled.Image`
   width: ${width * 0.57}px; 
   height: ${width * 0.5}px;
 `
-const SneakerContainer = styled(CardContainer)`
+const SneakerContainer = styled(CardContainer)<OSProps>`
   background-color: #d2a747;
-  height: ${props => (props.os === "ios" ? "185px" : "195px")}
+  height: ${({os}) => (os === "ios" ? "185px" : "195px")}
 `
 const ApparelContainer = styled(CardContainer)`
   background-color: #3f3f3f;
