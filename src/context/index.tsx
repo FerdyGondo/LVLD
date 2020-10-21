@@ -101,7 +101,7 @@ const BottomText = styled.Text`
 
 const ImageContainer = styled.View`
     width: 100px;
-    height: 50px;
+    height: 55px;
 `
 const Image = styled.Image`
     width: 100%;
