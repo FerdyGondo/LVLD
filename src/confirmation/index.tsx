@@ -90,11 +90,11 @@ export default function index({ route, navigation }: Props) {
                 </ListContainer>
                 <LowerContainer>
                     <BigSizeContainer>
-                        <BigUpperText>{result[1].timeLeft}</BigUpperText>
+                        <BigUpperText>{result[1].timeLeft || "00"}</BigUpperText>
                         <BigLowerText>HOURS</BigLowerText>
                     </BigSizeContainer>
                     <BigSizeContainer>
-                        <BigUpperText>{result[2].timeLeft}</BigUpperText>
+                        <BigUpperText>{result[2].timeLeft || "00"}</BigUpperText>
                         <BigLowerText>MINUTES</BigLowerText>
                     </BigSizeContainer>
                     <BigSizeContainer>
