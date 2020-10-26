@@ -17,7 +17,6 @@ export default function index({ modalVisible, setModalVisible, selected }) {
         setModalVisible(!modalVisible)
     }
     return (
-        <Container>
             <Modal
                 transparent={true}
                 visible={modalVisible}
@@ -58,8 +57,7 @@ export default function index({ modalVisible, setModalVisible, selected }) {
                     </ButtonContainer>
                     </ModalView>
                 </Container>
-                </Modal>
-        </Container>
+            </Modal>
     )
 }
 
