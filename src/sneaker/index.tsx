@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Actions from '../../actions'
 import ProfileComponent from '../shared/components/Profile'
 import Loading from '../shared/components/Loading'
+import Modal from '../shared/components/Modal'
 
 import Fontisto from 'react-native-vector-icons/Fontisto';
 const myIcon = <Fontisto name="angle-left" size={30} color="#fff" />;
@@ -28,6 +29,7 @@ const numColumns: number = 4;
 const Sneaker = React.memo(({ navigation }: Prop): ReactElement => {
     const dispatch = useDispatch()
     const sneakers = useSelector(state => state.sneakers.sneaker)
+    const [modalVisible, setModalVisible] = useState(true)
 
     useEffect(() => {
         dispatch(Actions.sneakers.fetchSneakers.trigger())
@@ -70,7 +72,7 @@ const Sneaker = React.memo(({ navigation }: Prop): ReactElement => {
 
     const renderList = ({ item, index }: List) => {
         return (
-            <TileContainer key={index} tile={item.key} onPress={() => selectTile(item)} selected={selected} available={item.data.length !== 0} disabled={item.data.length === 0}>
+            <TileContainer key={index} tile={item.key} onPress={() => setModalVisible(true)} selected={selected} available={item.data.length !== 0} disabled={item.data.length === 0}>
                 <Tile tile={item.key} selected={selected}>
                     {item.key}
                 </Tile>
@@ -82,6 +84,7 @@ const Sneaker = React.memo(({ navigation }: Prop): ReactElement => {
 
     return (
         <Container>
+            <Modal modalVisible={modalVisible} setModalVisible={setModalVisible} />
             <ProfileComponent />
             <GenderContainer>
                 <GenderMaleContainer onPress={() => genderSwitch("male")} gender={gender}>
