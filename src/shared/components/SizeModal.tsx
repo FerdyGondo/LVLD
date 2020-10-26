@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Alert,Modal,StyleSheet,Text,TouchableHighlight,View } from "react-native";
+import { Alert,Modal,Platform } from "react-native";
 import styled from 'styled-components'
 import CheckBox from '@react-native-community/checkbox';
 import { storeSize, storeSizeShown } from '../utils'
@@ -34,7 +34,7 @@ export default function index({ modalVisible, setModalVisible, selected }) {
                             onValueChange={(newValue) => askAgain(newValue)}
                             boxType={'square'}
                             lineWidth={1}
-                            style={{ width: 10, height: 10,  borderWidth: 0.5, borderColor: '#000', marginRight: 10 }}
+                            style={{ width: 10, height: 10,  borderWidth: 0.5, borderColor: '#000', marginRight: Platform.OS === 'android' ? 30 : 10 }}
                         />
                             <ModalSubText>Dont ask me again.</ModalSubText>
                         </SubContainer>
