@@ -4,7 +4,6 @@ import {Picker} from '@react-native-community/picker';
 import styled from 'styled-components'
 import AntDesign from 'react-native-vector-icons/AntDesign';
 const myIcon = <AntDesign name="caretdown" size={10} color="#979797" />;
-import AndroidPicker from './AndroidPicker';
 
 const deviceHeight = Dimensions.get("window").height
 
@@ -12,8 +11,9 @@ export default class PickerModal extends Component {
     constructor(props) {
       super(props) 
       this.state = {
-          show: true,
-          entry: 1
+          show: false,
+          entry: 1,
+          showAmount: false
       }  
     }
 
@@ -47,12 +47,65 @@ export default class PickerModal extends Component {
        )
     }
 
+    renderIOS = () => {
+        return (
+            <Picker
+            selectedValue={this.state.entry}
+            style={{flex: 1, height: 50, width: 200, bottom: Platform.OS === 'android' ? 0 : 70 }}
+            itemStyle={{ fontFamily: "Montserrat-Medium", fontSize: 30 }}
+            onValueChange={(itemValue, itemIndex) =>
+                this.setState({entry: itemValue})
+            }>
+            <Picker.Item label="1" value="1" />
+            <Picker.Item label="2" value="2" />
+            <Picker.Item label="3" value="3" />
+            <Picker.Item label="4" value="4" />
+            <Picker.Item label="5" value="5" />
+            </Picker> 
+        )
+    }
+
+    renderAndroid = () => {
+        if (this.state.showAmount) {
+            return (
+                <PopContainer>
+                    <UpperContainer>
+                        <PopupText>Entry Amount</PopupText>
+                    </UpperContainer>
+                    <SubNumber>
+                        <NumberText>1</NumberText>
+                    </SubNumber>
+                    <SubNumber>
+                        <NumberText>2</NumberText>
+                    </SubNumber>
+                    <SubNumber>
+                        <NumberText>3</NumberText>
+                    </SubNumber>
+                    <SubNumber>
+                        <NumberText>4</NumberText>
+                    </SubNumber>
+                    <SubNumber>
+                        <NumberText>5</NumberText>
+                    </SubNumber>
+                </PopContainer>
+            )
+        }
+        return (
+            <NumberComponent>
+                <TextNumber>1</TextNumber>
+                <IconContainer>{myIcon}</IconContainer>
+            </NumberComponent>
+        )
+    }
+
     renderContent = () => {
         return (
             <Cover>
-                <AndroidPicker />
-                <QuantityContainer onPress={this.close}>
-                    <BottomText>{`Confirm: $${this.state.entry}.00/Entry`}</BottomText>
+                <RenderContainer>
+                {Platform.OS === 'android' ? this.renderAndroid() : this.renderIOS()}
+                </RenderContainer>
+                <QuantityContainer onPress={this.close} os={Platform.OS}>
+                    <PopupText>{`Confirm: $${this.state.entry}.00/Entry`}</PopupText>
                 </QuantityContainer>
             </Cover>
         )
@@ -71,7 +124,7 @@ export default class PickerModal extends Component {
                     <Container>
                         {this.renderOutsideTouchable(onTouchOutside)}
                         <MainContainer>
-                           {this.renderTitle()}
+                           {!this.state.showAmount && this.renderTitle()}
                            {this.renderContent()}
                         </MainContainer>
                     </Container>
@@ -124,12 +177,12 @@ const QuantityContainer = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
     margin: 0px 25px;
-    top: 50px;
+    top: ${props => props.os === 'android' ? '50px' : '50px'};
 `
-const BottomText = styled.Text`
+const PopupText = styled.Text`
     font-family: "Montserrat-Bold";
     color: #fff;
-    font-size: 18px;
+    font-size: 17px;
 `
 const NumberComponent = styled.View`
     border-color: #979797;
@@ -147,4 +200,32 @@ const IconContainer = styled.View`
     position: absolute;
     top: 70%;
     right: 10%;
+`
+const PopContainer = styled.View`
+    background-color: #ffffff;
+    border-color: #97979797;
+    border-width: 1px;
+    border-radius: 20px;
+    top: -120px;
+`
+const UpperContainer = styled.View`
+    background-color: #000000;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 50px;
+
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+`
+const SubNumber = styled.TouchableOpacity`
+    border-top-width: 1px;
+    border-color: #979797;
+    justify-content: center;
+    align-items: center;
+    padding: 7px;
+`
+const NumberText = styled.Text`
+    font-family: "Montserrat";
+    color: #000000;
+    font-size: 17px;
 `
