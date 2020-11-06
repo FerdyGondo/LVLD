@@ -65,6 +65,11 @@ export default class PickerModal extends Component {
         )
     }
 
+    submitAndroid = (item) => {
+        this.setState({ entry: item })
+        this.setState({ showAmount: false })
+    }
+
     renderAndroid = () => {
         if (this.state.showAmount) {
             return (
@@ -72,27 +77,27 @@ export default class PickerModal extends Component {
                     <UpperContainer>
                         <PopupText>Entry Amount</PopupText>
                     </UpperContainer>
-                    <SubNumber>
+                    <SubNumber onPress={() => this.submitAndroid(1)}>
                         <NumberText>1</NumberText>
                     </SubNumber>
-                    <SubNumber>
+                    <SubNumber onPress={() => this.submitAndroid(2)}>
                         <NumberText>2</NumberText>
                     </SubNumber>
-                    <SubNumber>
+                    <SubNumber onPress={() => this.submitAndroid(3)}>
                         <NumberText>3</NumberText>
                     </SubNumber>
-                    <SubNumber>
+                    <SubNumber onPress={() => this.submitAndroid(4)}>
                         <NumberText>4</NumberText>
                     </SubNumber>
-                    <SubNumber>
+                    <SubNumber onPress={() => this.submitAndroid(5)}>
                         <NumberText>5</NumberText>
                     </SubNumber>
                 </PopContainer>
             )
         }
         return (
-            <NumberComponent>
-                <TextNumber>1</TextNumber>
+            <NumberComponent onPress={() => this.setState({ showAmount: true })}>
+                <TextNumber>{this.state.entry}</TextNumber>
                 <IconContainer>{myIcon}</IconContainer>
             </NumberComponent>
         )
@@ -104,7 +109,7 @@ export default class PickerModal extends Component {
                 <RenderContainer>
                 {Platform.OS === 'android' ? this.renderAndroid() : this.renderIOS()}
                 </RenderContainer>
-                <QuantityContainer onPress={this.close} os={Platform.OS}>
+                <QuantityContainer onPress={this.close} os={Platform.OS} showAmount={this.state.showAmount}>
                     <PopupText>{`Confirm: $${this.state.entry}.00/Entry`}</PopupText>
                 </QuantityContainer>
             </Cover>
@@ -123,7 +128,7 @@ export default class PickerModal extends Component {
                 onRequestClose={this.close}>
                     <Container>
                         {this.renderOutsideTouchable(onTouchOutside)}
-                        <MainContainer>
+                        <MainContainer os={Platform.OS}>
                            {!this.state.showAmount && this.renderTitle()}
                            {this.renderContent()}
                         </MainContainer>
@@ -164,7 +169,7 @@ const MainContainer = styled.View`
     background-color: #ffffff;
     width: 100%;
     padding: 0px 10px;
-    max-height: ${deviceHeight*0.4}px;
+    max-height: ${props => props.os === 'android' ? `${deviceHeight*0.32}px` : `${deviceHeight*0.4}px`};
 `
 const RenderContainer = styled.View`
     height: 80px;
@@ -177,14 +182,17 @@ const QuantityContainer = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
     margin: 0px 25px;
-    top: ${props => props.os === 'android' ? '50px' : '50px'};
+    top: ${props => props.os === 'android' ? '-10px' : '50px'};
+    ${({ showAmount }) => showAmount && `
+        top: 70px;
+    `}
 `
 const PopupText = styled.Text`
     font-family: "Montserrat-Bold";
     color: #fff;
     font-size: 17px;
 `
-const NumberComponent = styled.View`
+const NumberComponent = styled.TouchableOpacity`
     border-color: #979797;
     border-width: 1px;
     padding: 10px;
