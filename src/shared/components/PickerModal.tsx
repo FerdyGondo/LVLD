@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { Text, View, Modal, TouchableWithoutFeedback, Dimensions, FlatList, Platform } from 'react-native'
 import {Picker} from '@react-native-community/picker';
 import styled from 'styled-components'
+import AntDesign from 'react-native-vector-icons/AntDesign';
+const myIcon = <AntDesign name="caretdown" size={10} color="#979797" />;
+import AndroidPicker from './AndroidPicker';
 
 const deviceHeight = Dimensions.get("window").height
 
@@ -9,7 +12,7 @@ export default class PickerModal extends Component {
     constructor(props) {
       super(props) 
       this.state = {
-          show: false,
+          show: true,
           entry: 1
       }  
     }
@@ -47,21 +50,7 @@ export default class PickerModal extends Component {
     renderContent = () => {
         return (
             <Cover>
-                <RenderContainer>
-                <Picker
-                    selectedValue={this.state.entry}
-                    style={{flex: 1, height: 50, width: 200, bottom: Platform.OS === 'android' ? 0 : 70 }}
-                    itemStyle={{ fontFamily: "Montserrat-Medium", fontSize: 30 }}
-                    onValueChange={(itemValue, itemIndex) =>
-                        this.setState({entry: itemValue})
-                    }>
-                    <Picker.Item label="1" value="1" />
-                    <Picker.Item label="2" value="2" />
-                    <Picker.Item label="3" value="3" />
-                    <Picker.Item label="4" value="4" />
-                    <Picker.Item label="5" value="5" />
-                    </Picker> 
-                </RenderContainer>
+                <AndroidPicker />
                 <QuantityContainer onPress={this.close}>
                     <BottomText>{`Confirm: $${this.state.entry}.00/Entry`}</BottomText>
                 </QuantityContainer>
@@ -141,4 +130,21 @@ const BottomText = styled.Text`
     font-family: "Montserrat-Bold";
     color: #fff;
     font-size: 18px;
+`
+const NumberComponent = styled.View`
+    border-color: #979797;
+    border-width: 1px;
+    padding: 10px;
+    flex-direction: row;
+    width: 200px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+`
+const TextNumber = styled.Text`
+`
+const IconContainer = styled.View`
+    position: absolute;
+    top: 70%;
+    right: 10%;
 `
