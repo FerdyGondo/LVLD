@@ -83,46 +83,6 @@ const ShadowContainer = styled.View`
   padding: 1px;
   margin: 1px;
 `
-const MainContainer = styled.View`
-  flex-direction: row;
-  margin: 8px 20px;
-`
-const ProfileText = styled.Text`
-  font-size: 15px;
-  font-family: "Montserrat-ExtraBold";
-`
-const SubText = styled.Text`
-  font-family: "Montserrat"
-`
-const ProfileContainer = styled.TouchableOpacity`
-  flex-direction: row;
-  flex: 1;
-  align-items: center;
-`
-const Profile = styled.View`
-  margin-right: 7px;
-`
-const MoneyContainer = styled.View`
-  flex-direction: row;
-  align-items: center;
-  background-color: #000;
-  padding: 7px;
-  border-radius: 20px;
-`
-const MoneyText = styled.Text`
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-`
-const IconContainer = styled.View`
-  background-color: #d2a747;
-  margin-left: 7px;
-  width: 15px;
-  height: 15px;
-  border-radius: 7px;
-  align-items: center;
-  justify-content: center;
-`
 const BodyContainer = styled.View`
   padding: 12px 0px 0px;;
   flex: 1;
