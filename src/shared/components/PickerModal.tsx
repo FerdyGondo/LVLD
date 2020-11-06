@@ -214,7 +214,7 @@ const PopContainer = styled.View`
     border-color: #97979797;
     border-width: 1px;
     border-radius: 20px;
-    top: -120px;
+    top: -100px;
 `
 const UpperContainer = styled.View`
     background-color: #000000;
