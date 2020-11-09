@@ -51,19 +51,30 @@ const RenderItem = styled.View`
     border-color: #979797;
     border-bottom-width: 1px;
     background-color: #ffffff;
-    padding: 15px 50px 15px 20px;
+    padding: 12px 50px 12px 20px;
     flex-direction: row;
     justify-content: space-between;
+    align-items: flex-end
 `
 const LeftText = styled.View`
 `
 const LeftLowerText = styled.Text`
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 12px;
 `
 const LeftUpperText = styled.Text`
+    font-family: "Montserrat-Bold";
+    font-size: 12px;
 `
 const RightText = styled.View`
 `
 const RightLowerText = styled.Text`
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 10px;
 `
 const RightUpperText = styled.Text`
+    font-family: "Montserrat-Bold";
+    font-size: 10px;
 `
