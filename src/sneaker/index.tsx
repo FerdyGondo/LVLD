@@ -99,7 +99,7 @@ const Sneaker = React.memo(({ navigation }: Prop): ReactElement => {
     const renderList = ({ item, index }: List) => {
         return (
             <TileContainer key={index} tile={item.key} onPress={() => selectTile(item)} selected={selected} available={item.data.length !== 0} disabled={item.data.length === 0}>
-                <Tile tile={item.key} selected={selected}>
+                <Tile tile={item.key} selected={selected} available={item.data.length !== 0}>
                     {item.key}
                 </Tile>
             </TileContainer>
@@ -128,6 +128,9 @@ const Sneaker = React.memo(({ navigation }: Prop): ReactElement => {
                     renderItem={renderList}
                 />
             </SizeContainer>
+            <ButtonContainer>
+              <ButtonText>View All Men's Sizes</ButtonText>
+            </ButtonContainer>
         </Container>
     )
 })
@@ -183,15 +186,37 @@ const TileContainer = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  opacity: ${props => props.available ? 1 : 0.5};
-  background-color: ${props => props.tile === props.selected ? "#fff" : "#000" };
-  shadow-color: ${props => props.tile === props.selected ? "#000" : "#fff"};
+  background-color: ${props => props.tile === props.selected ? "#000" : "#fff" };
+  shadow-color: ${props => props.tile === props.selected ? "#fff" : "#000"};
   shadow-opacity: 0.3;
   shadow-offset: 2px 2px;
   elevation: 20;
+  ${({ available }) => !available && `
+      background-color: #AAAAAA;
+  `}
 `
 const Tile = styled.Text`
   font-size: 24px;
-  color: ${props => props.tile === props.selected ? "#000" : "#fff"};
+  color: ${props => props.tile === props.selected ? "#fff" : "#000"};
   font-family: "Montserrat-ExtraBold";
+  ${({ available }) => !available && `
+    color: #ffffff;
+  `}
+`
+const ButtonContainer = styled.TouchableOpacity`
+    background-color: #C29A41;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    padding: 14px;
+    background-color: #979797;
+    position: absolute;
+    bottom: 0px;
+    margin: 20px 25px;
+    width: 87%;
+`
+const ButtonText = styled.Text`
+    color: #fff;
+    font-family: "Montserrat-Bold";
+    font-size: 18px;
 `
