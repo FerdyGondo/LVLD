@@ -213,6 +213,9 @@ const ButtonContainer = styled.TouchableOpacity`
     border-radius: 40px;
     padding: 14px;
     background-color: #979797;
+
+    position: absolute;
+    bottom: 0px;
     margin: 15px 25px;
     width: 87%;
 `
@@ -222,8 +225,8 @@ const ButtonText = styled.Text`
     font-size: 18px;
 `
 const LitterContainer = styled.View`
-  width: 100%;
-  height: 100px;
   background-color: transparent;
-  opacity: 0.3;
+  width: 100%;
+  height: 55px;
+  
 `
