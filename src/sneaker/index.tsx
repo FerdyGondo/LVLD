@@ -128,9 +128,12 @@ const Sneaker = React.memo(({ navigation }: Prop): ReactElement => {
                     renderItem={renderList}
                 />
             </SizeContainer>
-            <ButtonContainer>
-              <ButtonText>View All Men's Sizes</ButtonText>
-            </ButtonContainer>
+
+            <LitterContainer>
+              <ButtonContainer>
+                <ButtonText>View All Men's Sizes</ButtonText>
+              </ButtonContainer>
+            </LitterContainer>
         </Container>
     )
 })
@@ -175,11 +178,12 @@ const SecondText = styled(FirstText)`
 const SizeContainer = styled.View`
   margin: 10px 0px;
   margin-left: 20px;
+  flex: 3;
 `
 const TileContainer = styled.TouchableOpacity`
   width: ${width/5.4}px;
   height: ${height/11}px;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
   margin-right: 16px;
   margin-top: 2px;
   margin-left: 3px;
@@ -204,19 +208,22 @@ const Tile = styled.Text`
   `}
 `
 const ButtonContainer = styled.TouchableOpacity`
-    background-color: #C29A41;
     justify-content: center;
     align-items: center;
     border-radius: 40px;
     padding: 14px;
     background-color: #979797;
-    position: absolute;
-    bottom: 0px;
-    margin: 20px 25px;
+    margin: 15px 25px;
     width: 87%;
 `
 const ButtonText = styled.Text`
     color: #fff;
     font-family: "Montserrat-Bold";
     font-size: 18px;
+`
+const LitterContainer = styled.View`
+  width: 100%;
+  height: 100px;
+  background-color: transparent;
+  opacity: 0.3;
 `
