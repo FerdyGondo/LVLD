@@ -313,7 +313,7 @@ const LobbyContainer = styled.View`
   border-bottom-width: 0.7px;
 `
 const LobbyMainContainer = styled.TouchableOpacity`
-  background-color: ${props => props.lobby === "lobby" ? "#fff" : "#000"};
+  background-color: ${props => props.lobby === "lobby" ? "#000" : "#fff"};
   border-radius: 20px;
   align-items: center;
   justify-content: center;
@@ -323,15 +323,15 @@ const LobbyMainContainer = styled.TouchableOpacity`
   width: ${width/2.3}px;
 `
 const ChatMainContainer = styled(LobbyMainContainer)`
-  background-color: ${props => props.lobby === "lobby" ? "#000" : "#fff"};
+  background-color: ${props => props.lobby === "lobby" ? "#fff" : "#000"};
 `
 const FirstText = styled.Text`
   font-size: 16px;
-  color: ${props => props.lobby === "lobby" ? "#000" : "#fff"};
+  color: ${props => props.lobby === "lobby" ? "#fff" : "#000"};
   font-family: "Montserrat-Medium"
 `
 const SecondText = styled(FirstText)`
-  color: ${props => props.lobby === "lobby" ? "#fff": "#000"};
+  color: ${props => props.lobby === "lobby" ? "#000": "#fff"};
 `
 const List = styled.FlatList`
 `
