@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import ProfileComponent from '../shared/components/Profile';
-import { resetData } from '../shared/utils'
+import { resetData, getData } from '../shared/utils'
 
 import Fontisto from 'react-native-vector-icons/Fontisto';
 const myIcon = <Fontisto name="angle-right" size={16} color="#A9A9A9" />;
 
 import ProfileIcon from '../../assets/svg/ProfileIcon'
+const SIZE = '@saved_size';
 
 type Props = {
     navigation: () => {};
@@ -22,6 +23,14 @@ export default function index({ route, navigation }: Props) {
 
     const data = items.data[0]
     const result = useTimer(data)
+    const [size, setSize] = useState(null)
+    
+    useEffect(() => {
+        (async () => {
+            const size = await getData(SIZE)
+            setSize(size)
+        })()
+    },[])
     
     const renderItem = ({ item }) => {
         return (
@@ -67,12 +76,16 @@ export default function index({ route, navigation }: Props) {
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={renderItem}
             />
-            <FooterContainer onPress={() => setDefaultMethod()}>
-                <SizeContainerF>
-                    <SizeTextLower>{items.key}</SizeTextLower>
-                </SizeContainerF>
-                <ChangeSizeText>Change Size</ChangeSizeText>
-            </FooterContainer>
+            {
+                size && (
+                    <FooterContainer onPress={() => setDefaultMethod()}>
+                        <SizeContainerF>
+                            <SizeTextLower>{items.key}</SizeTextLower>
+                        </SizeContainerF>
+                        <ChangeSizeText>Change Size</ChangeSizeText>
+                    </FooterContainer>
+                )
+            }
         </Container>
     )
 }
