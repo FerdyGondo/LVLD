@@ -126,14 +126,13 @@ const Sneaker = React.memo(({ navigation }: Prop): ReactElement => {
                     keyExtractor={(item) => item.key.toString()}
                     numColumns={numColumns}
                     renderItem={renderList}
+                    ListFooterComponent={Height}
                 />
             </SizeContainer>
 
-            <LitterContainer>
-              <ButtonContainer>
+            <ButtonContainer>
                 <ButtonText>View All Men's Sizes</ButtonText>
               </ButtonContainer>
-            </LitterContainer>
         </Container>
     )
 })
@@ -144,6 +143,11 @@ const Container = styled.View`
   flex: 1;
   background-color: #fff;
   height: ${height}px;
+`
+const Height = styled.View`
+  height: 70px;
+  width: 100%;
+  margin-top: auto;
 `
 const GenderContainer = styled.View`
   background-color: #fff;
@@ -178,7 +182,7 @@ const SecondText = styled(FirstText)`
 const SizeContainer = styled.View`
   margin: 10px 0px;
   margin-left: 20px;
-  flex: 3;
+  flex: 1;
 `
 const TileContainer = styled.TouchableOpacity`
   width: ${width/5.4}px;
@@ -217,7 +221,7 @@ const ButtonContainer = styled.TouchableOpacity`
     position: absolute;
     bottom: 0px;
     margin: 15px 25px;
-    width: 87%;
+    width: 88%;
 `
 const ButtonText = styled.Text`
     color: #fff;
@@ -225,8 +229,7 @@ const ButtonText = styled.Text`
     font-size: 18px;
 `
 const LitterContainer = styled.View`
-  background-color: transparent;
-  width: 100%;
-  height: 55px;
-  
+  width: 103%;
+  right: 3px;
+  flex: 0.1px;
 `
