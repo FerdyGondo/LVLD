@@ -159,7 +159,7 @@ const GenderContainer = styled.View`
   border-bottom-width: 1px;
 `
 const GenderMaleContainer = styled.TouchableOpacity`
-  background-color: ${props => props.gender === "male" ? "#fff" : "#000"};
+  background-color: ${props => props.gender === "male" ? "#000" : "#fff"};
   border-radius: 20px;
   align-items: center;
   justify-content: center;
@@ -169,15 +169,15 @@ const GenderMaleContainer = styled.TouchableOpacity`
   width: ${width/2.3}px;
 `
 const GenderFemaleContainer = styled(GenderMaleContainer)`
-  background-color: ${props => props.gender === "male" ? "#000" : "#fff"};
+  background-color: ${props => props.gender === "male" ? "#fff" : "#000"};
 `
 const FirstText = styled.Text`
   font-size: 16px;
-  color: ${props => props.gender === "male" ? "#000" : "#fff"};
+  color: ${props => props.gender === "male" ? "#fff" : "#000"};
   font-family: "Montserrat-Medium"
 `
 const SecondText = styled(FirstText)`
-  color: ${props => props.gender === "male" ? "#fff": "#000"};
+  color: ${props => props.gender === "male" ? "#000": "#fff"};
 `
 const SizeContainer = styled.View`
   margin: 10px 0px;
