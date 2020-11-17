@@ -117,7 +117,7 @@ const Sneaker = React.memo(({ navigation }: Prop): ReactElement => {
                     <FirstText gender={gender}>{`Men's`}</FirstText>
                 </GenderMaleContainer>
                 <GenderFemaleContainer onPress={() => genderSwitch("female")} gender={gender}>
-                    <SecondText gender={gender}>{`Woman's`}</SecondText>
+                    <SecondText gender={gender}>{`Women's`}</SecondText>
                 </GenderFemaleContainer>
             </GenderContainer>
             <SizeContainer>
@@ -127,6 +127,7 @@ const Sneaker = React.memo(({ navigation }: Prop): ReactElement => {
                     numColumns={numColumns}
                     renderItem={renderList}
                     ListFooterComponent={Height}
+                    ListHeaderComponent={VerticalHeight}
                 />
             </SizeContainer>
 
@@ -180,9 +181,12 @@ const SecondText = styled(FirstText)`
   color: ${props => props.gender === "male" ? "#000": "#fff"};
 `
 const SizeContainer = styled.View`
-  margin: 10px 0px;
   margin-left: 20px;
   flex: 1;
+`
+const VerticalHeight = styled.View`
+  height: 10px;
+  margin-top: auto;
 `
 const TileContainer = styled.TouchableOpacity`
   width: ${width/5.4}px;
