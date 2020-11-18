@@ -132,7 +132,7 @@ const Sneaker = React.memo(({ navigation }: Prop): ReactElement => {
             </SizeContainer>
 
             <ButtonContainer>
-                <ButtonText>View All Men's Sizes</ButtonText>
+                <ButtonText>{gender === 'male' ? "View All Men's Contests" : "View All Women's Contests"}</ButtonText>
               </ButtonContainer>
         </Container>
     )
