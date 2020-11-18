@@ -36,25 +36,23 @@ const Home = React.memo(({ navigation }: Props): ReactElement => {
             <Rockus>
               <ApparelContainer os={Platform.OS}>
                 <HeroText>{"Apparel Contests"}</HeroText>
-                <HeroSmallerText>{"Entry Fee $0.50-$6.00"}</HeroSmallerText>
                 <ApparelMainText>
                   <PlayBlackText>{"Coming Soon"}</PlayBlackText>
                 </ApparelMainText>
               </ApparelContainer>
               <ApparelImageContainer os={Platform.OS}>
-                <ApparelImage source={{ uri: "https://lvld-content.s3-us-west-1.amazonaws.com/home-screen/Apparel.png" }} resizeMode={"contain"} />
+                <ApparelImage source={{ uri: "https://lvld-content.s3-us-west-1.amazonaws.com/home-screen/Apparel-1.png" }} resizeMode={"contain"} />
               </ApparelImageContainer>
             </Rockus>
             <RokusWatch>
               <WatchContainer os={Platform.OS}>
                 <HeroText>{"Watch Contests"}</HeroText>
-                <HeroSmallerText>{"Entry Fee $0.50-$6.00"}</HeroSmallerText>
                 <WatchMainText>
                   <PlayBlackText>{"Coming Soon"}</PlayBlackText>
                 </WatchMainText>
               </WatchContainer>
               <WatchImageContainer os={Platform.OS}>
-                <WatchImage source={{ uri: "https://lvld-content.s3-us-west-1.amazonaws.com/home-screen/Watches.png" }} resizeMode={"contain"} />
+                <WatchImage source={{ uri: "https://lvld-content.s3-us-west-1.amazonaws.com/home-screen/watches-1.png" }} resizeMode={"contain"} />
               </WatchImageContainer>
             </RokusWatch>
           </Center>
@@ -93,7 +91,7 @@ const LiveText = styled.Text`
   color: #000;
   text-transform: uppercase;
   letter-spacing: 5px;
-  font-family: "Montserrat-ExtraBold";
+  font-family: "Montserrat-Bold";
   font-size: 20px;
   margin-bottom: 7px;
   margin-left: ${props => (props.os === "ios" ? "25px" : "22px")};
@@ -101,20 +99,22 @@ const LiveText = styled.Text`
 const HeroText = styled.Text`
   font-size: 22px;
   color: #fff;
-  font-family: "Montserrat";
+  font-family: "Montserrat-ExtraBold";
   line-height: 26.82px;
-  font-weight: 900;
   height: 27px;
-  text-shadow-offset: -1px 1px;
-  text-shadow-radius: 10px;
-  text-shadow-color: rgba(0, 0, 0, 0.75);
+  font-weight: 900;
+  text-shadow-offset: 2px 2px;
+  text-shadow-radius: 0.1px;
+  text-shadow-color: rgba(0, 0, 0, 0.4);
 `
 const HeroSmallerText = styled.Text`
   font-size: 12px;
   color: #fff;
-  font-family: "Montserrat";
-  font-weight: 600;
+  font-family: "Montserrat-Bold";
   margin-top: 2px;
+  text-shadow-offset: 2px 2px;
+  text-shadow-radius: 0.1px;
+  text-shadow-color: rgba(0, 0, 0, 0.4);
 `
 const PlayText = styled.Text`
   font-family: "Montserrat";
@@ -137,7 +137,7 @@ const RokusWatch = styled(Rockus)`
 `
 const CardContainer = styled.TouchableOpacity`
   padding: 10px 25px 0px;
-  margin-top: 7px;
+  margin-top: 5px;
 `
 const MainText = styled.View`
   margin-top: 10px;
@@ -157,10 +157,10 @@ const WatchMainText = styled(MainText)`
 `
 const SneakerImageContainer = styled.View`
   position: absolute;
-  bottom: ${props => (props.os === "ios" ? "8px" : "12px")};
-  right: 0px;
-  width: ${width*0.92}px;
-  height: 100px
+  bottom: ${props => (props.os === "ios" ? "5px" : "12px")};
+  width: ${width*0.95}px;
+  right: 5px;
+  height: 105px;
 `
 const SneakerImage = styled.Image`
   width: 100%;
@@ -170,26 +170,26 @@ const SneakerImage = styled.Image`
 const ApparelImageContainer = styled.View`
   position: absolute;
   bottom: ${props => (props.os === "ios" ? "8px" : "12px")};
-  right: 5px;
+  right: 20px;
   bottom: -50px;
 `
 const ApparelImage = styled.Image`
-  width: ${width * 0.57}px; 
-  height: ${width * 0.6}px;
+  width: ${width * 0.50}px; 
+  height: ${width * 0.63}px;
 `
 const WatchImageContainer = styled.View`
   position: absolute;
   bottom: ${props => (props.os === "ios" ? "8px" : "12px")};
-  right: 40px;
+  right: 30px;
   bottom: -30px;
 `
 const WatchImage = styled.Image`
-  width: ${width * 0.52}px; 
+  width: ${width * 0.57}px; 
   height: ${width * 0.5}px;
 `
 const SneakerContainer = styled(CardContainer)`
   background-color: #d2a747;
-  height: ${props => (props.os === "ios" ? "185px" : "195px")}
+  height: ${props => (props.os === "ios" ? "190px" : "195px")}
 `
 const ApparelContainer = styled(CardContainer)`
   background-color: #292929;
