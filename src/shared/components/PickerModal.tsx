@@ -110,7 +110,7 @@ export default class PickerModal extends Component {
                 {Platform.OS === 'android' ? this.renderAndroid() : this.renderIOS()}
                 </RenderContainer>
                 <QuantityContainer onPress={this.close} os={Platform.OS} showAmount={this.state.showAmount}>
-                    <PopupText>{`Confirm: $${this.state.entry}.00/Entry`}</PopupText>
+                    <PopupText>{`${this.state.entry} Entry`}</PopupText>
                 </QuantityContainer>
             </Cover>
         )
