@@ -152,12 +152,16 @@ const Height = styled.View`
 `
 const GenderContainer = styled.View`
   background-color: #fff;
-  padding: 18px 20px;
+  padding: 15px 20px;
   flex-direction: row;
   justify-content: space-between;
   border-color: #3f3f3f;
   border-top-width: 1px;
   border-bottom-width: 1px;
+  position: absolute;
+  top: 46px;
+  z-Index: 1;
+  opacity: 0.9;
 `
 const GenderMaleContainer = styled.TouchableOpacity`
   background-color: ${props => props.gender === "male" ? "#000" : "#fff"};
@@ -167,13 +171,14 @@ const GenderMaleContainer = styled.TouchableOpacity`
   padding: 8px;
   border-width: 1px;
   border-color: #3f3f3f;
-  width: ${width/2.3}px;
+  width: ${width/2.4}px;
+  margin-right: 20px;
 `
 const GenderFemaleContainer = styled(GenderMaleContainer)`
   background-color: ${props => props.gender === "male" ? "#fff" : "#000"};
 `
 const FirstText = styled.Text`
-  font-size: 16px;
+  font-size: 14px;
   color: ${props => props.gender === "male" ? "#fff" : "#000"};
   font-family: "Montserrat-Medium"
 `
@@ -186,7 +191,7 @@ const SizeContainer = styled.View`
 `
 const VerticalHeight = styled.View`
   height: 10px;
-  margin-top: auto;
+  margin-top: 65px;
 `
 const TileContainer = styled.TouchableOpacity`
   width: ${width/5.4}px;
