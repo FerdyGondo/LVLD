@@ -110,7 +110,7 @@ export default class PickerModal extends Component {
                 {Platform.OS === 'android' ? this.renderAndroid() : this.renderIOS()}
                 </RenderContainer>
                 <QuantityContainer onPress={this.close} os={Platform.OS} showAmount={this.state.showAmount}>
-                    <PopupText>{`${this.state.entry} Entry`}</PopupText>
+                    <PopupText>{`${this.state.entry} ${this.state.entry === 1 ? 'Entry' : 'Entries'}`}</PopupText>
                 </QuantityContainer>
             </Cover>
         )
