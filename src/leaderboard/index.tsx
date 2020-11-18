@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Dimensions } from 'react-native'
 import styled from 'styled-components'
 import ProfileIcon from '../../assets/svg/ProfileIcon'
-import Message from './components/Message'
+import MessageComponent from '../shared/components/MessageComponent'
 
 const {width,height} = Dimensions.get("window")
 
@@ -78,7 +78,7 @@ export default function index({ route }: Props) {
             renderItem={renderList}
         />
         } else {
-            return <Message />
+            return <MessageComponent />
         }
     }
 

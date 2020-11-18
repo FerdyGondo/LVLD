@@ -59,18 +59,17 @@ export default function Message() {
                 behavior={Platform.OS == "ios" ? "padding" : "height"}
                 style={{ flex: 1 }}
                 >
-                     <List 
-            data={messaged}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={renderMessageList}
-            />
+                <List 
+                    data={messaged}
+                    keyExtractor={(item, index) => index.toString()}
+                    renderItem={renderMessageList}
+                />
             <BoxContainer>
                 <EnterMessage placeholder={'Enter Message'} onChangeText={(text) => setMessage(text)} value={message} />
                 <SendContainer onPress={() => onSubmit()}>
                     <MessageText color={'white'}>Send</MessageText>
                 </SendContainer>
             </BoxContainer>
-
                 </KeyboardAvoidingView>
            
         </Container>
