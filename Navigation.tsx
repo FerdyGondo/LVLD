@@ -48,7 +48,7 @@ import Verification from './src/verification'
 import UpdatePassword from './src/updatepassword'
 import Personal from './src/personal'
 import History from './src/history'
-import Tutorial from './src/tutorial'
+import Tutorial from './src/hamburger/tutorial'
 
 const Stack     = createStackNavigator();
 const Drawer    = createDrawerNavigator();
