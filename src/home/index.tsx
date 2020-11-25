@@ -1,199 +1,74 @@
-import React, { ReactElement } from 'react';
-
-import styled from 'styled-components/native'
+import React from 'react'
+import styled from 'styled-components'
 import ProfileComponent from '../shared/components/Profile'
 
-import { Dimensions, Platform } from 'react-native'
-
-const { width } = Dimensions.get("window")
-
-type Props = {
-  navigation: () => {}
-}
-
-const Home = React.memo(({ navigation }: Props): ReactElement => {
+export default function index() {
   return (
     <Container>
-      <ShadowContainer elevation={5}>
-        <ProfileComponent />
-      </ShadowContainer>
-      <BodyContainer>
-        <LiveText os={Platform.OS}>Live contests</LiveText>
-        <Scroll>
-          <Center>
-            <RenderItemContainer onPress={() => navigation.navigate("Sneaker")}>
-              <SneakerContainer os={Platform.OS} onPress={() => navigation.navigate("Sneaker")}>
-                <HeroText>{"Sneaker Contests"}</HeroText>
-                <HeroSmallerText>{"Entry Fee $1.00-$5.00"}</HeroSmallerText>
-                <SneakerMainText>
-                  <PlayText>{"PLAY NOW"}</PlayText>
-                </SneakerMainText>
-              </SneakerContainer>
-              <SneakerImageContainer os={Platform.OS}>
-                <SneakerImage source={{ uri: "https://lvld-content.s3-us-west-1.amazonaws.com/home-screen/shoes-1.png" }} />
-              </SneakerImageContainer>
-            </RenderItemContainer>
-            <Rockus>
-              <ApparelContainer os={Platform.OS}>
-                <HeroText>{"Apparel Contests"}</HeroText>
-                <ApparelMainText>
-                  <PlayBlackText>{"Coming Soon"}</PlayBlackText>
-                </ApparelMainText>
-              </ApparelContainer>
-              <ApparelImageContainer os={Platform.OS}>
-                <ApparelImage source={{ uri: "https://lvld-content.s3-us-west-1.amazonaws.com/home-screen/Apparel-1.png" }} resizeMode={"contain"} />
-              </ApparelImageContainer>
-            </Rockus>
-            <RokusWatch>
-              <WatchContainer os={Platform.OS}>
-                <HeroText>{"Watch Contests"}</HeroText>
-                <WatchMainText>
-                  <PlayBlackText>{"Coming Soon"}</PlayBlackText>
-                </WatchMainText>
-              </WatchContainer>
-              <WatchImageContainer os={Platform.OS}>
-                <WatchImage source={{ uri: "https://lvld-content.s3-us-west-1.amazonaws.com/home-screen/watches-1.png" }} resizeMode={"contain"} />
-              </WatchImageContainer>
-            </RokusWatch>
-          </Center>
-        </Scroll>
-      </BodyContainer>
+        <Profile>
+            <ProfileComponent />
+        </Profile>
+        <MainContainer>
+          <Image source={{ uri: "https://lvld-content.s3-us-west-1.amazonaws.com/login-screen/Facebook-Circle_Auth.png" }} />
+          <MainText>Connect LVLD to your Facebook account.</MainText>
+          <SubText>We're building feautures which will allow you to play LVLD more socially.</SubText>
+        </MainContainer>
+        <ButtonContainer>
+          <ButtonText>Continue to Facebook</ButtonText>
+        </ButtonContainer>
     </Container>
   )
-})
-
-export default Home;
+}
 
 const Container = styled.View`
   flex: 1;
-  background-color: #fff;
+  background-color: #ffffff;
+  padding-bottom: 20px;
 `
-const Scroll = styled.ScrollView`
+const Profile = styled.View`
+  border-color: #979797;
+  border-bottom-width: 1px;
+`
+const MainContainer = styled.View`
   flex: 1;
-`
-const Center = styled.View`
-  margin-bottom: 40px
-`
-const ShadowContainer = styled.View`
-  background-color: #fff;
-  shadow-color: #000;
-  shadow-opacity: 0.2;
-  shadow-offset: 1px 5px;
-  elevation: 20;
-  padding: 1px;
-  margin: 1px;
-`
-const BodyContainer = styled.View`
-  padding: 12px 0px 0px;;
-  flex: 1;
-`
-const LiveText = styled.Text`
-  color: #000;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  font-family: "Montserrat-Bold";
-  font-size: 20px;
-  margin-bottom: 7px;
-  margin-left: ${props => (props.os === "ios" ? "25px" : "22px")};
-`
-const HeroText = styled.Text`
-  font-size: 22px;
-  color: #fff;
-  font-family: "Montserrat-ExtraBold";
-  line-height: 26.82px;
-  height: 27px;
-  font-weight: 900;
-  text-shadow-offset: 2px 2px;
-  text-shadow-radius: 0.1px;
-  text-shadow-color: rgba(0, 0, 0, 0.4);
-`
-const HeroSmallerText = styled.Text`
-  font-size: 12px;
-  color: #fff;
-  font-family: "Montserrat-Bold";
-  margin-top: 2px;
-  text-shadow-offset: 2px 2px;
-  text-shadow-radius: 0.1px;
-  text-shadow-color: rgba(0, 0, 0, 0.4);
-`
-const PlayText = styled.Text`
-  font-family: "Montserrat";
-  font-weight: 600;
-  font-size: 10px;
-  color: #fff;
-`
-const PlayBlackText = styled(PlayText)`
-  color: #000;
-`
-const RenderItemContainer = styled.TouchableOpacity`
-`
-const Rockus = styled.View`
-  height: 185px;
-  background-color: #292929;
-  margin-top: 7px;
-`
-const RokusWatch = styled(Rockus)`
-  background-color: #626262;
-`
-const CardContainer = styled.TouchableOpacity`
-  padding: 10px 25px 0px;
-  margin-top: 5px;
-`
-const MainText = styled.View`
-  margin-top: 10px;
-  padding: 10px 10px;
-  width: 35%;
-  border-radius: 30px;
   align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
 `
-const SneakerMainText = styled(MainText)`
-  background-color: #000;
+const Image = styled.Image`
+  width: 40px;
+  height: 40px;
 `
-const ApparelMainText = styled(MainText)`
-  background-color: #fff;
+const MainText = styled.Text`
+  width: 40%;
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14.63px;
+  text-align: center;
+  margin-top: 10px;
 `
-const WatchMainText = styled(MainText)`
-  background-color: #fff;
+const SubText = styled.Text`
+  width: 60%;
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.63px;
+  text-align: center;
+  margin-top: 10px;
 `
-const SneakerImageContainer = styled.View`
-  position: absolute;
-  bottom: ${props => (props.os === "ios" ? "5px" : "12px")};
-  width: ${width*0.95}px;
-  right: 5px;
-  height: 105px;
+const ButtonContainer = styled.View`
+  margin: 0px 20px;
+  padding: 12px;
+  border-radius: 25px;
+  background-color: #256BB3;
+  align-items: center;
+  justify-content: center;
 `
-const SneakerImage = styled.Image`
-  width: 100%;
-  height: 100%;
-  align-self: center;
-`
-const ApparelImageContainer = styled.View`
-  position: absolute;
-  bottom: ${props => (props.os === "ios" ? "8px" : "12px")};
-  right: 20px;
-  bottom: -50px;
-`
-const ApparelImage = styled.Image`
-  width: ${width * 0.50}px; 
-  height: ${width * 0.63}px;
-`
-const WatchImageContainer = styled.View`
-  position: absolute;
-  bottom: ${props => (props.os === "ios" ? "8px" : "12px")};
-  right: 30px;
-  bottom: -30px;
-`
-const WatchImage = styled.Image`
-  width: ${width * 0.57}px; 
-  height: ${width * 0.5}px;
-`
-const SneakerContainer = styled(CardContainer)`
-  background-color: #d2a747;
-  height: ${props => (props.os === "ios" ? "190px" : "195px")}
-`
-const ApparelContainer = styled(CardContainer)`
-  background-color: #292929;
-`
-const WatchContainer = styled(CardContainer)`
-  background-color: #626262;
+const ButtonText = styled.Text`
+  font-family: "Montserrat";
+  color: #ffffffff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
 `
