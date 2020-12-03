@@ -188,16 +188,16 @@ const InviteImageContainer = styled.View`
 const IconRightContainer = styled.TouchableOpacity`
     position: absolute;
     right: 25px;
-    top: 30%;
+    top: 40%;
 `
 const IconLeftContainer = styled.TouchableOpacity`
     position: absolute;
     left: 25px;
-    top: 30%;
+    top: 40%;
 `
 const InviteImage = styled.Image`
     width: ${width}px;
-    height: ${width}px;
+    height: ${height < 800 ? width : width * 1.2}px;
     align-self: center;
 `
 const PrimaryText = styled.Text`
