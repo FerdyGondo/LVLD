@@ -146,7 +146,17 @@ const BottomTabNavigator = ({navigation}) => {
                 style: {height: Platform.OS === 'android' ? window.height/14 : window.height/11}
               }}
       >
-        <BottomTab.Screen name="home"     component={HomeStackNavigator}  />
+        <BottomTab.Screen 
+          name="home"     
+          component={HomeStackNavigator}  
+          listeners={({ navigation, route }) => ({
+            tabPress: e => {
+                if (route.state && route.state.routeNames.length > 0) {
+                    navigation.navigate('home')
+                }
+            },
+        })}
+        />
         <BottomTab.Screen name="content"  component={ContentStackNavigator} />
         <BottomTab.Screen name="entries"  component={Entries} />
       </BottomTab.Navigator>
