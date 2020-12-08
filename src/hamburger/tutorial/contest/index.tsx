@@ -4,7 +4,7 @@ import { useQuery, gql } from '@apollo/client'
 import styled from 'styled-components'
 import ProfileComponent from '../../../shared/components/Profile'
 import Loading from '../../../shared/components/Loading'
-import BlockContent from '@sanity/block-content-to-react'
+// import BlockContent from '@sanity/block-content-to-react'
 import Icons from 'react-native-vector-icons/FontAwesome';
 <Icons name="angle-right" size={25} color={"#252525"} />;
 
